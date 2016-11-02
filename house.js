@@ -281,7 +281,7 @@ function chimney() {
   context.beginPath();
   context.save();
   context.fillStyle = "#8e726c";
-  context.rect(235,100,45,60);
+  context.rect(235,95,45,60);
   context.fill();
   context.restore();
   context.closePath();
@@ -290,7 +290,7 @@ function chimney() {
   context.beginPath();
   context.save();
   context.fillStyle = "#a38a83";
-  context.rect(220,100,45,60);
+  context.rect(220,95,45,60);
   context.fill();
   context.restore();
   context.closePath();
