@@ -1,7 +1,14 @@
+
+body {
+  margin: 0;
+}
+
 #houseCanvas, #slide {
     display: block;
     margin: auto;
 }
+
 p {
+    font-family: "Arial";
     text-align: center;
 }
