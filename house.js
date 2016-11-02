@@ -40,8 +40,8 @@ function smoke1() {
     // Smoke Chunk
     context.beginPath();
     context.arc(position.x, position.y, (Math.floor(Math.random() * (30 - 25 + 1)) + 25), 0, Math.PI * 2, true);
-//    context.fillStyle = "#E0E3DA";
-    context.fillStyle = "yellow";
+    context.fillStyle = "#E0E3DA";
+//    context.fillStyle = "yellow";
     context.fill();
     context.closePath();
 
