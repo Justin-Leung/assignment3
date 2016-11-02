@@ -1,18 +1,18 @@
 
 // Starts the full animation at 60 frames per second.
-init(50);
+init(52);
 
-// Calculates New Position For Ball
+// Calculates the path by normalizing the vector path.
 function normalize(v) {
     var length = Math.sqrt(v.x * v.x + v.y * v.y);
     return {x: v.x / length, y: v.y / length};
 }
 
 // Variable Declaration
-var canvas, currentAnimation, context; // Target is where the bubbles will move.
-var leftPosition = {x: 235, y: 20}; // Position is the location where the bubbles start.
-var middlePosition = {x: 235, y: 20}; // Position is the location where the bubbles start.
-var rightPosition = {x: 235, y: 20}; // Position is the location where the bubbles start.
+var canvas, currentAnimation, context, grd;
+var leftPosition = {x: 235, y: 20};
+var middlePosition = {x: 235, y: 20};
+var rightPosition = {x: 235, y: 20};
 
 leftTarget = {x: 230, y: 0};
 middleTarget = {x: 235, y: 0};
@@ -47,12 +47,12 @@ function buildHouse() {
     rightPosition.x = 235;
   } else {
     clear();
-    smoke();
     building();
+    windows();
+    door();
+    smoke();
     chimney();
     roof();
-    door();
-    windows();
   }
 
   leftPosition.x += leftStep.x;
@@ -65,79 +65,131 @@ function buildHouse() {
   rightPosition.y += rightStep.y;
 }
 
+/* * * * * * * * * * * * * * * *
+*        Smoke Function
+* * * * * * * * * * * * * * * */
 function smoke() {
 
   context.save();
 
   // Smoke Chunk #1
   context.beginPath();
-  context.shadowColor='#222222';
+  context.shadowColor='#111111';
   context.shadowBlur = 30;
-  context.fillStyle = "rgba(190, 193, 183, 0.15)";
-  context.arc(leftPosition.x, leftPosition.y, (Math.floor(Math.random() * (23 - 21 + 1)) + 21), 0, Math.PI * 2, true);
+  context.fillStyle = "rgba(270, 173, 185, 0.16)";
+  context.arc(leftPosition.x, leftPosition.y, smallSmoke(), 0, Math.PI * 2, true);
   context.fill();
   context.closePath();
 
   // Smoke Chunk #1 Repeat
   context.beginPath();
-  context.fillStyle = "rgba(190, 193, 183, 0.15)";
-  context.arc(leftPosition.x + 30, leftPosition.y + 120, (Math.floor(Math.random() * (23 - 21 + 1)) + 21), 0, Math.PI * 2, true);
+  context.fillStyle = "rgba(170, 173, 185, 0.16)";
+  context.arc(leftPosition.x + 30, leftPosition.y + 120, smallSmoke(), 0, Math.PI * 2, true);
   context.fill();
   context.closePath();
 
   // Smoke Chunk #2
   context.beginPath();
-  context.fillStyle = "rgba(190, 193, 183, 0.15)";
-  context.arc(leftPosition.x - 20, leftPosition.y - 10, (Math.floor(Math.random() * (23 - 21 + 1)) + 21), 0, Math.PI * 2, true);
+  context.fillStyle = "rgba(170, 173, 185, 0.16)";
+  context.arc(leftPosition.x - 20, leftPosition.y - 10, smallSmoke(), 0, Math.PI * 2, true);
   context.fill();
   context.closePath();
 
   // Smoke Chunk #2 Repeat
   context.beginPath();
-  context.fillStyle = "rgba(190, 193, 183, 0.15)";
-  context.arc((leftPosition.x - 20) + 30, (leftPosition.y - 10) + 120, (Math.floor(Math.random() * (23 - 21 + 1)) + 21), 0, Math.PI * 2, true);
+  context.fillStyle = "rgba(170, 173, 185, 0.16)";
+  context.arc((leftPosition.x - 20) + 30, (leftPosition.y - 10) + 120, smallSmoke(), 0, Math.PI * 2, true);
   context.fill();
   context.closePath();
 
   // Smoke Chunk #3
   context.beginPath();
-  context.fillStyle = "rgba(190, 193, 183, 0.15)";
-  context.arc(rightPosition.x + 20, rightPosition.y + 50, (Math.floor(Math.random() * (23 - 21 + 1)) + 21), 0, Math.PI * 2, true);
+  context.fillStyle = "rgba(170, 173, 185, 0.16)";
+  context.arc(rightPosition.x + 20, rightPosition.y + 50, smallSmoke(), 0, Math.PI * 2, true);
   context.fill();
   context.closePath();
 
   // Smoke Chunk #3 Repeat
   context.beginPath();
-  context.fillStyle = "rgba(190, 193, 183, 0.15)";
-  context.arc((rightPosition.x - 20) + 10, (rightPosition.y + 10) + 165, (Math.floor(Math.random() * (23 - 21 + 1)) + 21), 0, Math.PI * 2, true);
+  context.fillStyle = "rgba(170, 173, 185, 0.16)";
+  context.arc((rightPosition.x - 20) + 10, (rightPosition.y + 10) + 160, smallSmoke(), 0, Math.PI * 2, true);
   context.fill();
   context.closePath();
 
   // Smoke Chunk #4
   context.beginPath();
-  context.fillStyle = "rgba(190, 193, 183, 0.15)";
-  context.arc(middlePosition.x + 22, middlePosition.y + 30, (Math.floor(Math.random() * (30 - 28 + 1)) + 25), 0, Math.PI * 2, true);
+  context.fillStyle = "rgba(170, 173, 185, 0.16)";
+  context.arc(middlePosition.x + 22, middlePosition.y + 30, largeSmoke(), 0, Math.PI * 2, true);
   context.fill();
   context.closePath();
 
   // Smoke Chunk #4
   context.beginPath();
-  context.fillStyle = "rgba(190, 193, 183, 0.15)";
-  context.arc(middlePosition.x + 22, (middlePosition.y) + 150, (Math.floor(Math.random() * (30 - 28 + 1)) + 25), 0, Math.PI * 2, true);
+  context.fillStyle = "rgba(170, 173, 185, 0.16)";
+  context.arc(middlePosition.x + 22, (middlePosition.y) + 150, largeSmoke(), 0, Math.PI * 2, true);
   context.fill();
   context.closePath();
 
   context.restore();
 }
 
+/* * * * * * * * * * * * * * * *
+*       Building Function
+* * * * * * * * * * * * * * * */
 function building() {
+
+  // Sky Object
+  context.beginPath();
+  grd = context.createLinearGradient(30,100,950,0);
+  grd.addColorStop(0,"#bfdbfb");
+  grd.addColorStop(0.5,"#77b8f5");
+
+  context.fillStyle=grd;
+  context.fillRect(0, 0, 500, 500);
+  context.fill();
+  context.closePath();
+
   // Grass Under Building
   context.save();
   context.beginPath();
   context.fillStyle = "#8CD790";
-  context.translate(20, 215);
-  context.scale(240, 120);
+  context.translate(-100, 215);
+  context.scale(400, 200);
   context.arc(1, 1, 1, 0, 2 * Math.PI, false);
+  context.fill();
+  context.restore();
+  context.closePath();
+
+  // Grass Under Building
+  context.save();
+  context.beginPath();
+  context.fillStyle = "#7ac77f";
+  context.translate(70, 385);
+  context.scale(20, 20);
+  context.arc(1, 1, 1, 3.1, 2 * Math.PI, false);
+  context.fill();
+  context.restore();
+  context.closePath();
+
+  // Grass Under Building
+  context.save();
+  context.beginPath();
+  context.fillStyle = "#8CD790";
+  context.translate(80, 385);
+  context.scale(20, 20);
+  context.arc(1, 1, 1, 0, 2 * Math.PI, false);
+  context.fill();
+  context.restore();
+  context.closePath();
+
+  // Shade Grass
+  context.beginPath();
+  context.save();
+  context.shadowColor='#6eba72';
+  context.shadowBlur = 20;
+  context.fillStyle = "#73c778";
+  context.rotate(-65*Math.PI/180);
+  context.rect(-236,440,74,250);
   context.fill();
   context.restore();
   context.closePath();
@@ -187,7 +239,7 @@ function building() {
   context.save();
   context.fillStyle = "#8CD790";
   context.rotate(20*Math.PI/180);
-  context.rect(350,275,85,20);
+  context.rect(350,275,70,20);
   context.fill();
   context.restore();
   context.closePath();
@@ -215,12 +267,15 @@ function building() {
   context.beginPath();
   context.save();
   context.fillStyle = "#8CD790";
-  context.rect(415,260,30,116);
+  context.rect(415,260,30,110);
   context.fill();
   context.restore();
   context.closePath();
 }
 
+/* * * * * * * * * * * * * * * *
+*       Chimney Function
+* * * * * * * * * * * * * * * */
 function chimney() {
   // Chimney Back Dark Side
   context.beginPath();
@@ -241,6 +296,9 @@ function chimney() {
   context.closePath();
 }
 
+/* * * * * * * * * * * * * * * *
+*         Door Function
+* * * * * * * * * * * * * * * */
 function door() {
   // Door
   context.beginPath();
@@ -256,7 +314,7 @@ function door() {
   context.save();
   context.fillStyle = "#ddcdc9";
   context.rotate(-16*Math.PI/180);
-  context.rect(220,365,75,30);
+  context.rect(220,373,75,20);
   context.fill();
   context.restore();
   context.closePath();
@@ -264,9 +322,9 @@ function door() {
   // Bottom Door Cover
   context.beginPath();
   context.save();
-  context.fillStyle = "#8CD790";
+  context.fillStyle = "#73c778";
   context.rotate(-16*Math.PI/180);
-  context.rect(200,470,80,20);
+  context.rect(200,470,78,20);
   context.fill();
   context.restore();
   context.closePath();
@@ -281,6 +339,9 @@ function door() {
   context.closePath();
 }
 
+/* * * * * * * * * * * * * * * *
+*         Roof Function
+* * * * * * * * * * * * * * * */
 function roof() {
   // Right Roof Line
   context.beginPath();
@@ -343,6 +404,9 @@ function roof() {
   context.closePath();
 }
 
+/* * * * * * * * * * * * * * * *
+*        Window Function
+* * * * * * * * * * * * * * * */
 function windows() {
   // Window Right
   context.beginPath();
@@ -421,10 +485,24 @@ function windows() {
   context.closePath();
 }
 
+/* * * * * * * * * * * * * * * *
+*        Clear Function
+* * * * * * * * * * * * * * * */
 function clear() {
   context.clearRect(0, 0, canvas.width, canvas.height);
 }
 
+function largeSmoke() {
+  return (Math.floor(Math.random() * (30 - 28 + 1)) + 25);
+}
+
+function smallSmoke() {
+  return (Math.floor(Math.random() * (23 - 21 + 1)) + 21)
+}
+
+/* * * * * * * * * * * * * * * *
+*     Slider Value Function
+* * * * * * * * * * * * * * * */
 function updateSlider(slideAmount) {
     var sliderDiv = document.getElementById("sliderAmount");
     init(slideAmount);
