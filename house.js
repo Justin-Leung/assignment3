@@ -452,26 +452,6 @@ function windows() {
   context.restore();
   context.closePath();
 
-  // Window Right Top Cover
-  context.beginPath();
-  context.save();
-  context.fillStyle = "#e7d7d3";
-  context.rotate(20*Math.PI/180);
-  context.rect(250,170,115,30);
-  context.fill();
-  context.restore();
-  context.closePath();
-
-  // Window Right Bottom Cover
-  context.beginPath();
-  context.save();
-  context.fillStyle = "#e7d7d3";
-  context.rotate(20*Math.PI/180);
-  context.rect(290,245,105,26);
-  context.fill();
-  context.restore();
-  context.closePath();
-
   // Window Left
   context.beginPath();
   context.save();
@@ -483,22 +463,26 @@ function windows() {
   context.restore();
   context.closePath();
 
-  // Window Left Top Cover
+  // Window Top Cover
   context.beginPath();
   context.save();
   context.fillStyle = "#e7d7d3";
   context.rotate(20*Math.PI/180);
-  context.rect(170,175,105,26);
+//  context.rect(170,175,105,26);
+  context.moveTo(170, 175);    
+  context.lineTo(365, 170);
+  context.lineTo(365, 200);
+  context.lineTo(170, 208);
   context.fill();
   context.restore();
   context.closePath();
 
-  // Window Left Bottom Cover
+  // Window Bottom Cover
   context.beginPath();
   context.save();
   context.fillStyle = "#e7d7d3";
   context.rotate(20*Math.PI/180);
-  context.rect(200,245,105,30);
+  context.rect(200,245,195,30);
   context.fill();
   context.restore();
   context.closePath();
