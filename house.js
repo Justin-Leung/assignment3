@@ -352,13 +352,19 @@ function roof() {
   context.lineTo(353,163);
   context.stroke();
   context.closePath();
+    
 
   // Roof Object Slant
   context.beginPath();
   context.save();
+//  context.fillStyle = "white";
   context.fillStyle = "#f47d58";
   context.rotate(20*Math.PI/180);
-  context.rect(130,30,260,140);
+//  context.rect(130,30,260,140);
+  context.moveTo(130, 60);    
+  context.lineTo(390, 30);
+  context.lineTo(390, 170);
+  context.lineTo(130, 180);
   context.fill();
   context.restore();
   context.closePath();
@@ -368,7 +374,11 @@ function roof() {
   context.save();
   context.fillStyle = "#e77754";
   context.rotate(20*Math.PI/180);
-  context.rect(130,30,260,110);
+//  context.rect(130,30,260,110);
+  context.moveTo(130, 60);    
+  context.lineTo(390, 30);
+  context.lineTo(390, 142);
+  context.lineTo(130, 156);
   context.fill();
   context.restore();
   context.closePath();
@@ -378,7 +388,11 @@ function roof() {
   context.save();
   context.fillStyle = "#da7251";
   context.rotate(20*Math.PI/180);
-  context.rect(130,30,260,80);
+//  context.rect(130,30,260,80);
+  context.moveTo(130, 60);    
+  context.lineTo(390, 30);
+  context.lineTo(390, 114);
+  context.lineTo(130, 132);
   context.fill();
   context.restore();
   context.closePath();
@@ -388,7 +402,11 @@ function roof() {
   context.save();
   context.fillStyle = "#d26c4c";
   context.rotate(20*Math.PI/180);
-  context.rect(130,30,260,50);
+//  context.rect(130,30,260,50);
+  context.moveTo(130, 60);    
+  context.lineTo(390, 30);
+  context.lineTo(390, 86);
+  context.lineTo(130, 108);
   context.fill();
   context.restore();
   context.closePath();
@@ -398,10 +416,25 @@ function roof() {
   context.save();
   context.fillStyle = "#cb6849";
   context.rotate(20*Math.PI/180);
-  context.rect(130,30,260,25);
+//  context.rect(130,30,260,25);
+  context.moveTo(130, 60);    
+  context.lineTo(390, 30);
+  context.lineTo(390, 58);
+  context.lineTo(130, 84);
   context.fill();
   context.restore();
   context.closePath();
+    
+    //test nodes positions  
+  context.beginPath();
+    context.save();
+  context.rotate(20*Math.PI/180);
+//  context.arc(130, 170, 5, 0, Math.PI * 2, true);
+  context.fillStyle = "white";
+    context.fill();
+    context.restore();
+    context.closePath();
+    
 }
 
 /* * * * * * * * * * * * * * * *
@@ -483,6 +516,8 @@ function windows() {
   context.fill();
   context.restore();
   context.closePath();
+    
+    
 }
 
 /* * * * * * * * * * * * * * * *
