@@ -76,7 +76,7 @@ function smoke() {
   context.beginPath();
   context.shadowColor='#111111';
   context.shadowBlur = 30;
-  context.fillStyle = "rgba(270, 173, 185, 0.16)";
+  context.fillStyle = "rgba(170, 173, 185, 0.16)";
   context.arc(leftPosition.x, leftPosition.y, smallSmoke(), 0, Math.PI * 2, true);
   context.fill();
   context.closePath();
@@ -123,7 +123,7 @@ function smoke() {
   context.fill();
   context.closePath();
 
-  // Smoke Chunk #4
+  // Smoke Chunk #4 Repeat
   context.beginPath();
   context.fillStyle = "rgba(170, 173, 185, 0.16)";
   context.arc(middlePosition.x + 22, (middlePosition.y) + 150, largeSmoke(), 0, Math.PI * 2, true);
