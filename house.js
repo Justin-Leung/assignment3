@@ -76,7 +76,7 @@ function smoke() {
   context.beginPath();
   context.shadowColor='#111111';
   context.shadowBlur = 30;
-  context.fillStyle = "rgba(270, 173, 185, 0.16)";
+  context.fillStyle = "rgba(170, 173, 185, 0.16)";
   context.arc(leftPosition.x, leftPosition.y, smallSmoke(), 0, Math.PI * 2, true);
   context.fill();
   context.closePath();
@@ -123,7 +123,7 @@ function smoke() {
   context.fill();
   context.closePath();
 
-  // Smoke Chunk #4
+  // Smoke Chunk #4 Repeat
   context.beginPath();
   context.fillStyle = "rgba(170, 173, 185, 0.16)";
   context.arc(middlePosition.x + 22, (middlePosition.y) + 150, largeSmoke(), 0, Math.PI * 2, true);
@@ -352,13 +352,19 @@ function roof() {
   context.lineTo(353,163);
   context.stroke();
   context.closePath();
+    
 
   // Roof Object Slant
   context.beginPath();
   context.save();
+//  context.fillStyle = "white";
   context.fillStyle = "#f47d58";
   context.rotate(20*Math.PI/180);
-  context.rect(130,30,260,140);
+//  context.rect(130,30,260,140);
+  context.moveTo(130, 60);    
+  context.lineTo(390, 30);
+  context.lineTo(390, 170);
+  context.lineTo(130, 180);
   context.fill();
   context.restore();
   context.closePath();
@@ -368,7 +374,11 @@ function roof() {
   context.save();
   context.fillStyle = "#e77754";
   context.rotate(20*Math.PI/180);
-  context.rect(130,30,260,110);
+//  context.rect(130,30,260,110);
+  context.moveTo(130, 60);    
+  context.lineTo(390, 30);
+  context.lineTo(390, 142);
+  context.lineTo(130, 156);
   context.fill();
   context.restore();
   context.closePath();
@@ -378,7 +388,11 @@ function roof() {
   context.save();
   context.fillStyle = "#da7251";
   context.rotate(20*Math.PI/180);
-  context.rect(130,30,260,80);
+//  context.rect(130,30,260,80);
+  context.moveTo(130, 60);    
+  context.lineTo(390, 30);
+  context.lineTo(390, 114);
+  context.lineTo(130, 132);
   context.fill();
   context.restore();
   context.closePath();
@@ -388,7 +402,11 @@ function roof() {
   context.save();
   context.fillStyle = "#d26c4c";
   context.rotate(20*Math.PI/180);
-  context.rect(130,30,260,50);
+//  context.rect(130,30,260,50);
+  context.moveTo(130, 60);    
+  context.lineTo(390, 30);
+  context.lineTo(390, 86);
+  context.lineTo(130, 108);
   context.fill();
   context.restore();
   context.closePath();
@@ -398,10 +416,25 @@ function roof() {
   context.save();
   context.fillStyle = "#cb6849";
   context.rotate(20*Math.PI/180);
-  context.rect(130,30,260,25);
+//  context.rect(130,30,260,25);
+  context.moveTo(130, 60);    
+  context.lineTo(390, 30);
+  context.lineTo(390, 58);
+  context.lineTo(130, 84);
   context.fill();
   context.restore();
   context.closePath();
+    
+    //test nodes positions  
+  context.beginPath();
+    context.save();
+  context.rotate(20*Math.PI/180);
+//  context.arc(130, 170, 5, 0, Math.PI * 2, true);
+  context.fillStyle = "white";
+    context.fill();
+    context.restore();
+    context.closePath();
+    
 }
 
 /* * * * * * * * * * * * * * * *
@@ -419,26 +452,6 @@ function windows() {
   context.restore();
   context.closePath();
 
-  // Window Right Top Cover
-  context.beginPath();
-  context.save();
-  context.fillStyle = "#e7d7d3";
-  context.rotate(20*Math.PI/180);
-  context.rect(250,170,115,30);
-  context.fill();
-  context.restore();
-  context.closePath();
-
-  // Window Right Bottom Cover
-  context.beginPath();
-  context.save();
-  context.fillStyle = "#e7d7d3";
-  context.rotate(20*Math.PI/180);
-  context.rect(290,245,105,26);
-  context.fill();
-  context.restore();
-  context.closePath();
-
   // Window Left
   context.beginPath();
   context.save();
@@ -450,22 +463,26 @@ function windows() {
   context.restore();
   context.closePath();
 
-  // Window Left Top Cover
+  // Window Top Cover
   context.beginPath();
   context.save();
   context.fillStyle = "#e7d7d3";
   context.rotate(20*Math.PI/180);
-  context.rect(170,175,105,26);
+//  context.rect(170,175,105,26);
+  context.moveTo(170, 175);    
+  context.lineTo(365, 170);
+  context.lineTo(365, 200);
+  context.lineTo(170, 208);
   context.fill();
   context.restore();
   context.closePath();
 
-  // Window Left Bottom Cover
+  // Window Bottom Cover
   context.beginPath();
   context.save();
   context.fillStyle = "#e7d7d3";
   context.rotate(20*Math.PI/180);
-  context.rect(200,245,105,30);
+  context.rect(200,245,195,30);
   context.fill();
   context.restore();
   context.closePath();
@@ -483,6 +500,8 @@ function windows() {
   context.fill();
   context.restore();
   context.closePath();
+    
+    
 }
 
 /* * * * * * * * * * * * * * * *
